@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 namespace App\Modules\Defaults\Auth\Model;
+
 use Core\Facades\DB;
 use Phalcon\Mvc\Model;
 use Core\Models\Behavior\SoftDelete;
@@ -33,10 +34,9 @@ class MenuModel extends Model
             WHERE 1=1 
                 AND is_aktif=1 
                 AND is_tampil=1 
-                AND id_menu in (SELECT id_menu FROM menu_otorisasi where id_role=? AND pdam_id = '".$pdam_id."') ORDER by urutan;
+                AND id_menu in (SELECT id_menu FROM menu_otorisasi where id_role=? AND pdam_id = '" . $pdam_id . "') ORDER by urutan;
         ";
 
-        // $result = DB::query($sql)->fetchAll(PDO::FETCH_OBJ);
         $result = DB::query($sql, [$session->user['id_role']])->fetchAll(PDO::FETCH_OBJ);
 
         return self::toTree($result);
@@ -45,10 +45,8 @@ class MenuModel extends Model
     private static function toTree($flatMenu, $idParent = 0)
     {
         $menus = [];
-        foreach($flatMenu as $key => $item)
-        {
-            if($item->parent_menu == $idParent)
-            {
+        foreach ($flatMenu as $key => $item) {
+            if ($item->parent_menu == $idParent) {
                 unset($flatMenu[$key]);
                 $children = self::toTree($flatMenu, $item->id_menu);
                 $item->has_children = !empty($children);

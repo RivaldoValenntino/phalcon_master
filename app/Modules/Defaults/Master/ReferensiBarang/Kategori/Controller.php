@@ -36,12 +36,12 @@ class Controller extends BaseController
         $search_nama = Request::getPost('search_nama');
 
         $builder = $this->modelsManager->createBuilder()
-                        ->columns('*')
-                        ->from(Model::class)
-                        ->where("1=1")
-                        ->andWhere("pdam_id = '$pdam_id'");
+            ->columns('*')
+            ->from(Model::class)
+            ->where("1=1")
+            ->andWhere("pdam_id = '$pdam_id'");
 
-        if($search_nama) {
+        if ($search_nama) {
             $builder->andWhere("nama LIKE '%$search_nama%'");
         }
 
@@ -54,7 +54,6 @@ class Controller extends BaseController
      */
     public function detailAction()
     {
-
     }
 
     /**
@@ -64,7 +63,7 @@ class Controller extends BaseController
     {
         $pdam_id = $this->session->user['pdam_id'];
         $sessUser = $this->session->user['nama'];
-        
+
         $data = [
             'nama'          => Request::getPost('nama'),
             'created_at'    => date('Y-m-d H:i:s'),
@@ -74,7 +73,7 @@ class Controller extends BaseController
         $create = new Model($data);
         $result = $create->save();
 
-        $log = new Log(); 
+        $log = new Log();
         $log->write("Insert Data Master-Referensi Barang-Kategori", $data, $result, "App\Modules\Defaults\Master\ReferensiBarang\Kategori\Controller", "INSERT");
         return Response::setJsonContent([
             'message' => 'Success',
@@ -97,7 +96,7 @@ class Controller extends BaseController
         $update->assign($data);
 
         $result = $update->save();
-        $log = new Log(); 
+        $log = new Log();
         $log->write("Update Data Master-Referensi Barang-Kategori", $data, $result, "App\Modules\Defaults\Master\ReferensiBarang\Kategori\Controller", "UPDATE");
         return Response::setJsonContent([
             'message' => 'Success',
@@ -111,17 +110,16 @@ class Controller extends BaseController
     {
         $id = Request::get('id');
         $data = [
-            'id'          => Request::get('id')
+            'id' => Request::get('id')
         ];
         $delete = Model::findFirst($id);
         $result = $delete->delete();
 
-        $log = new Log(); 
+        $log = new Log();
         $log->write("Delete Data Master-Referensi Barang-Kategori", $data, $result, "App\Modules\Defaults\Master\ReferensiBarang\Kategori\Controller", "DELETE");
 
         return Response::setJsonContent([
             'message' => 'Success',
         ]);
     }
-    
 }

@@ -1,8 +1,17 @@
-{% extends 'template/dashboard.volt' %} {% block title %}Master Referensi Barang
-Kategori {% endblock %} {% block content %}
+{% extends 'template/dashboard.volt' %} {% block title %} Datatables {% endblock
+%} {% block content %}
 <style>
   .select2-container--bootstrap4 .select2-selection--single {
     height: calc(3em) !important;
+  }
+  /* CSS */
+  .price {
+    float: right;
+  }
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
   }
 </style>
 <div class="page-content">
@@ -15,9 +24,7 @@ Kategori {% endblock %} {% block content %}
         border-bottom: 1px solid #e0e5e8 !important;
       "
     >
-      <h4 class="card-title text-dark-m3 mt-2">
-        Master - Referensi Barang - Kategori
-      </h4>
+      <h4 class="card-title text-dark-m3 mt-2">Datatables</h4>
       <div class="page-tools mt-3 mt-sm-0 mb-sm-n1 card-toolbar">
         <button
           class="btn mr-1 btn-info mb-2 radius-2"
@@ -52,7 +59,6 @@ Kategori {% endblock %} {% block content %}
         </a>
       </div>
     </div>
-
     <div class="card-body p-3">
       <div class="row">
         <div class="col-md-12">
@@ -63,8 +69,11 @@ Kategori {% endblock %} {% block content %}
             >
               <thead>
                 <tr class="bgc-info text-white text-center brc-black-tp10">
-                  <th style="vertical-align: middle">#</th>
-                  <th style="vertical-align: middle">Nama</th>
+                  <th style="vertical-align: middle">No</th>
+                  <th style="vertical-align: middle">Nama Pelanggan</th>
+                  <th style="vertical-align: middle">Alamat</th>
+                  <th style="vertical-align: middle">Nomor HP</th>
+                  <th style="vertical-align: middle">Kategori Laporan</th>
                 </tr>
               </thead>
               <tbody></tbody>
@@ -90,7 +99,7 @@ Kategori {% endblock %} {% block content %}
     <div class="modal-content radius-4">
       <div class="modal-header bgc-primary radius-t-4">
         <h4 class="modal-title text-white">
-          <i class="fa fa-list text-white"></i>&nbsp;&nbsp; Form - Kategori
+          <i class="fa fa-list text-white"></i>&nbsp;&nbsp; Form - Pelanggan
         </h4>
         <button type="button" class="close text-white" data-dismiss="modal">
           &times;
@@ -106,16 +115,67 @@ Kategori {% endblock %} {% block content %}
               <div class="input-group">
                 <div class="input-group-prepend">
                   <span class="input-group-text" style="width: 150px"
-                    >Nama</span
+                    >Nama Pelanggan</span
                   >
                 </div>
                 <input
                   type="text"
-                  id="nama"
-                  name="nama"
+                  id="nama_pelanggan"
+                  name="nama_pelanggan"
                   class="form-control"
                   required
                 />
+              </div>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-sm-12" style="margin-bottom: 5px">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" style="width: 150px"
+                    >Alamat</span
+                  >
+                </div>
+                <input name="alamat" id="alamat" class="form-control" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-sm-12" style="margin-bottom: 5px">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" style="width: 150px"
+                    >Nomor Telepon</span
+                  >
+                </div>
+                <input
+                  type="number"
+                  id="no_hp"
+                  name="no_hp"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-sm-12" style="margin-bottom: 5px">
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" style="width: 150px"
+                    >Kategori Laporan</span
+                  >
+                </div>
+                <select
+                  name="kategori_laporan"
+                  id="kategori_laporan"
+                  class="select2kategori"
+                >
+                  <option value="umum" selected>Umum</option>
+                  <option value="khusus">Khusus</option>
+                  <option value="lainnya">Lainnya</option>
+                </select>
               </div>
             </div>
           </div>
@@ -147,7 +207,7 @@ Kategori {% endblock %} {% block content %}
       <div class="modal-header bgc-primary radius-t-4">
         <h4 class="modal-title text-white">
           <i class="fa fa-search text-white"></i>&nbsp;&nbsp; Pencarian -
-          Kategori
+          Pelanggan
         </h4>
         <button type="button" class="close text-white" data-dismiss="modal">
           &times;
@@ -162,11 +222,28 @@ Kategori {% endblock %} {% block content %}
               </span>
             </div>
             <div class="input-group-prepend">
-              <span class="input-group-text"> Nama </span>
+              <span class="input-group-text"> Nama Pelanggan </span>
             </div>
             <input
               type="text"
-              name="search_nama"
+              name="search_nama_pelanggan"
+              class="form-control"
+              disabled=""
+            />
+          </div>
+
+          <div class="input-group mb-2 input-filter">
+            <div class="input-group-prepend" style="width: 10% !important">
+              <span class="input-group-text">
+                <input type="checkbox" class="ace-switch" />
+              </span>
+            </div>
+            <div class="input-group-prepend">
+              <span class="input-group-text"> Alamat </span>
+            </div>
+            <input
+              type="text"
+              name="search_alamat"
               class="form-control"
               disabled=""
             />
@@ -187,6 +264,6 @@ Kategori {% endblock %} {% block content %}
 </div>
 {% endblock %} {% block inline_script %}
 <script>
-  {% include 'Defaults/Master/ReferensiBarang/Kategori/index.js' %}
+  {% include 'Defaults/Datatables/index.js' %}
 </script>
 {% endblock %}

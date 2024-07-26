@@ -46,12 +46,13 @@ use Core\Facades\Request;
  */
 class Controller extends BaseController
 {
-    /**
-     * @routeGet("/getKelompok")
-     * @routePost("/getKelompok")
-     */
-    public function getKelompokAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	/**
+	 * @routeGet("/getKelompok")
+	 * @routePost("/getKelompok")
+	 */
+	public function getKelompokAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -72,16 +73,17 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getIndukKodePerkiraanGolongan")
-     * @routePost("/getIndukKodePerkiraanGolongan")
-     */
-    public function getIndukKodePerkiraanGolonganAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getIndukKodePerkiraanGolongan")
+	 * @routePost("/getIndukKodePerkiraanGolongan")
+	 */
+	public function getIndukKodePerkiraanGolonganAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$id = $this->request->get('id');
 		$offset = ($page - 1) * 20;
-		if($id){
+		if ($id) {
 			$data = ViewModelGolongan::find(
 				array(
 					'limit' => 21,
@@ -89,7 +91,7 @@ class Controller extends BaseController
 					'conditions' => "nama LIKE '%$nama%' AND pdam_id ='$pdam_id' AND parent_id is null AND id != '$id'"
 				)
 			);
-		}else{
+		} else {
 			$data = ViewModelGolongan::find(
 				array(
 					'limit' => 21,
@@ -109,11 +111,12 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getIndukKodePerkiraanKelompok")
-     * @routePost("/getIndukKodePerkiraanKelompok")
-     */
-    public function getIndukKodePerkiraanKelompokAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getIndukKodePerkiraanKelompok")
+	 * @routePost("/getIndukKodePerkiraanKelompok")
+	 */
+	public function getIndukKodePerkiraanKelompokAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -124,7 +127,7 @@ class Controller extends BaseController
 				'conditions' => "nama LIKE '%$nama%' AND pdam_id ='$pdam_id'"
 			)
 		);
-		
+
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
 		$json_data = array(
@@ -135,11 +138,12 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getKodePerkiraanKelompok")
-     * @routePost("/getKodePerkiraanKelompok")
-     */
-    public function getKodePerkiraanKelompokAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getKodePerkiraanKelompok")
+	 * @routePost("/getKodePerkiraanKelompok")
+	 */
+	public function getKodePerkiraanKelompokAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -160,11 +164,12 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getIndukKodePerkiraan")
-     * @routePost("/getIndukKodePerkiraan")
-     */
-    public function getIndukKodePerkiraanAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getIndukKodePerkiraan")
+	 * @routePost("/getIndukKodePerkiraan")
+	 */
+	public function getIndukKodePerkiraanAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -185,11 +190,12 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getKategori")
-     * @routePost("/getKategori")
-     */
-    public function getKetegoriAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getKategori")
+	 * @routePost("/getKategori")
+	 */
+	public function getKetegoriAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -210,11 +216,12 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuan")
-     * @routePost("/getSatuan")
-     */
-    public function getSatuanAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuan")
+	 * @routePost("/getSatuan")
+	 */
+	public function getSatuanAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -235,11 +242,12 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getRole")
-     * @routePost("/getRole")
-     */
-    public function getRoleAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getRole")
+	 * @routePost("/getRole")
+	 */
+	public function getRoleAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -260,11 +268,12 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuanKerja")
-     * @routePost("/getSatuanKerja")
-     */
-    public function getSatuanKerjaAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuanKerja")
+	 * @routePost("/getSatuanKerja")
+	 */
+	public function getSatuanKerjaAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -289,9 +298,9 @@ class Controller extends BaseController
 			LIMIT 20 OFFSET $offset
 		";
 		$bindParams = [
-            'pdam_id' => $pdam_id,
-            'nama' => $nama,
-        ];
+			'pdam_id' => $pdam_id,
+			'nama' => $nama,
+		];
 		$result = $this->db->fetchAll($sql);
 		// return $this->response->setJsonContent($result);
 		$has_more = count($result);
@@ -303,11 +312,12 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuanKerjaNonSub")
-     * @routePost("/getSatuanKerjaNonSub")
-     */
-    public function getSatuanKerjaNonSubAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuanKerjaNonSub")
+	 * @routePost("/getSatuanKerjaNonSub")
+	 */
+	public function getSatuanKerjaNonSubAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -328,22 +338,23 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuanKerjaPendapatanAirNonAirExist")
-     * @routePost("/getSatuanKerjaPendapatanAirNonAirExist")
-     */
-    public function getSatuanKerjaPendapatanAirNonAirExistAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuanKerjaPendapatanAirNonAirExist")
+	 * @routePost("/getSatuanKerjaPendapatanAirNonAirExist")
+	 */
+	public function getSatuanKerjaPendapatanAirNonAirExistAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$query = $this->modelsManager->createBuilder()
-				->columns('DISTINCT s.*')
-				->from(['s' => ModelSatuanKerja::class])
-				->leftJoin(ModelPendapatanAirNonAir::class, 'p.kode_satker = s.kode', 'p')
-				->where("s.pdam_id = '{$pdam_id}'")
-				->andWhere('p.id IS NOT NULL')
-				->limit(21)
-				->offset($offset);
+			->columns('DISTINCT s.*')
+			->from(['s' => ModelSatuanKerja::class])
+			->leftJoin(ModelPendapatanAirNonAir::class, 'p.kode_satker = s.kode', 'p')
+			->where("s.pdam_id = '{$pdam_id}'")
+			->andWhere('p.id IS NOT NULL')
+			->limit(21)
+			->offset($offset);
 		$data = $query->getQuery()->execute();
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
@@ -355,22 +366,23 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuanKerjaPendapatanAirNonAirExistPerubahan")
-     * @routePost("/getSatuanKerjaPendapatanAirNonAirExistPerubahan")
-     */
-    public function getSatuanKerjaPendapatanAirNonAirExistPerubahanAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuanKerjaPendapatanAirNonAirExistPerubahan")
+	 * @routePost("/getSatuanKerjaPendapatanAirNonAirExistPerubahan")
+	 */
+	public function getSatuanKerjaPendapatanAirNonAirExistPerubahanAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$query = $this->modelsManager->createBuilder()
-				->columns('DISTINCT s.*')
-				->from(['s' => ModelSatuanKerja::class])
-				->leftJoin(ModelPendapatanAirNonAirPerubahan::class, 'p.kode_satker = s.kode', 'p')
-				->where("s.pdam_id = '{$pdam_id}'")
-				->andWhere('p.id IS NOT NULL')
-				->limit(21)
-				->offset($offset);
+			->columns('DISTINCT s.*')
+			->from(['s' => ModelSatuanKerja::class])
+			->leftJoin(ModelPendapatanAirNonAirPerubahan::class, 'p.kode_satker = s.kode', 'p')
+			->where("s.pdam_id = '{$pdam_id}'")
+			->andWhere('p.id IS NOT NULL')
+			->limit(21)
+			->offset($offset);
 		$data = $query->getQuery()->execute();
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
@@ -382,25 +394,26 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getGolonganTarifPendapatanAirNonAirExist")
-     * @routePost("/getGolonganTarifPendapatanAirNonAirExist")
-     */
-    public function getGolonganTarifPendapatanAirNonAirExistAction(){
-        $kode_satker = Request::get('kode_satker');
-        $pdam_id = $this->session->user['pdam_id'];
-        $tahun = $this->session->user['tahun'];
+	 * @routeGet("/getGolonganTarifPendapatanAirNonAirExist")
+	 * @routePost("/getGolonganTarifPendapatanAirNonAirExist")
+	 */
+	public function getGolonganTarifPendapatanAirNonAirExistAction()
+	{
+		$kode_satker = Request::get('kode_satker');
+		$pdam_id = $this->session->user['pdam_id'];
+		$tahun = $this->session->user['tahun'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$query = $this->modelsManager->createBuilder()
-				->columns('g.id, g.pdam_id, g.nama, i.kode_satker, i.id AS id_indikator ')
-				->from(['g' => ModelGolonganTarif::class])
-				->leftJoin(ModelPendapatanAirNonAir::class, 'i.golongan_tarif_id = g.id', 'i')
-				->where("g.pdam_id = '{$pdam_id}'")
-				->andWhere("(i.tahun = $tahun AND i.kode_satker = '{$kode_satker}' OR i.kode_satker IS NULL)")
-				->groupBy('g.id')
-				->limit(21)
-				->offset($offset);
+			->columns('g.id, g.pdam_id, g.nama, i.kode_satker, i.id AS id_indikator ')
+			->from(['g' => ModelGolonganTarif::class])
+			->leftJoin(ModelPendapatanAirNonAir::class, 'i.golongan_tarif_id = g.id', 'i')
+			->where("g.pdam_id = '{$pdam_id}'")
+			->andWhere("(i.tahun = $tahun AND i.kode_satker = '{$kode_satker}' OR i.kode_satker IS NULL)")
+			->groupBy('g.id')
+			->limit(21)
+			->offset($offset);
 		$data = $query->getQuery()->execute();
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
@@ -412,25 +425,26 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getGolonganTarifPendapatanAirNonAirExistPerubahan")
-     * @routePost("/getGolonganTarifPendapatanAirNonAirExistPerubahan")
-     */
-    public function getGolonganTarifPendapatanAirNonAirExistPerubahanAction(){
-        $kode_satker = Request::get('kode_satker');
-        $pdam_id = $this->session->user['pdam_id'];
-        $tahun = $this->session->user['tahun'];
+	 * @routeGet("/getGolonganTarifPendapatanAirNonAirExistPerubahan")
+	 * @routePost("/getGolonganTarifPendapatanAirNonAirExistPerubahan")
+	 */
+	public function getGolonganTarifPendapatanAirNonAirExistPerubahanAction()
+	{
+		$kode_satker = Request::get('kode_satker');
+		$pdam_id = $this->session->user['pdam_id'];
+		$tahun = $this->session->user['tahun'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$query = $this->modelsManager->createBuilder()
-				->columns('g.id, g.pdam_id, g.nama, i.kode_satker, i.id AS id_indikator ')
-				->from(['g' => ModelGolonganTarif::class])
-				->leftJoin(ModelPendapatanAirNonAirPerubahan::class, 'i.golongan_tarif_id = g.id', 'i')
-				->where("g.pdam_id = '{$pdam_id}'")
-				->andWhere("(i.tahun = $tahun AND i.kode_satker = '{$kode_satker}' OR i.kode_satker IS NULL)")
-				->groupBy('g.id')
-				->limit(21)
-				->offset($offset);
+			->columns('g.id, g.pdam_id, g.nama, i.kode_satker, i.id AS id_indikator ')
+			->from(['g' => ModelGolonganTarif::class])
+			->leftJoin(ModelPendapatanAirNonAirPerubahan::class, 'i.golongan_tarif_id = g.id', 'i')
+			->where("g.pdam_id = '{$pdam_id}'")
+			->andWhere("(i.tahun = $tahun AND i.kode_satker = '{$kode_satker}' OR i.kode_satker IS NULL)")
+			->groupBy('g.id')
+			->limit(21)
+			->offset($offset);
 		$data = $query->getQuery()->execute();
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
@@ -442,22 +456,23 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuanKerjaPendapatanAirNonAirNotExist")
-     * @routePost("/getSatuanKerjaPendapatanAirNonAirNotExist")
-     */
-    public function getSatuanKerjaPendapatanAirNonAirNotExistAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuanKerjaPendapatanAirNonAirNotExist")
+	 * @routePost("/getSatuanKerjaPendapatanAirNonAirNotExist")
+	 */
+	public function getSatuanKerjaPendapatanAirNonAirNotExistAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$query = $this->modelsManager->createBuilder()
-				->columns('DISTINCT s.*')
-				->from(['s' => ModelSatuanKerja::class])
-				->leftJoin(ModelPendapatanAirNonAir::class, 'p.kode_satker = s.kode', 'p')
-				->where("s.pdam_id = '{$pdam_id}'")
-				->andWhere('p.id IS NULL')
-				->limit(21)
-				->offset($offset);
+			->columns('DISTINCT s.*')
+			->from(['s' => ModelSatuanKerja::class])
+			->leftJoin(ModelPendapatanAirNonAir::class, 'p.kode_satker = s.kode', 'p')
+			->where("s.pdam_id = '{$pdam_id}'")
+			->andWhere('p.id IS NULL')
+			->limit(21)
+			->offset($offset);
 		$data = $query->getQuery()->execute();
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
@@ -469,22 +484,23 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuanKerjaPendapatanAirNonAirNotExistPerubahan")
-     * @routePost("/getSatuanKerjaPendapatanAirNonAirNotExistPerubahan")
-     */
-    public function getSatuanKerjaPendapatanAirNonAirNotExistPerubahanAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuanKerjaPendapatanAirNonAirNotExistPerubahan")
+	 * @routePost("/getSatuanKerjaPendapatanAirNonAirNotExistPerubahan")
+	 */
+	public function getSatuanKerjaPendapatanAirNonAirNotExistPerubahanAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$query = $this->modelsManager->createBuilder()
-				->columns('DISTINCT s.*')
-				->from(['s' => ModelSatuanKerja::class])
-				->leftJoin(ModelPendapatanAirNonAirPerubahan::class, 'p.kode_satker = s.kode', 'p')
-				->where("s.pdam_id = '{$pdam_id}'")
-				->andWhere('p.id IS NULL')
-				->limit(21)
-				->offset($offset);
+			->columns('DISTINCT s.*')
+			->from(['s' => ModelSatuanKerja::class])
+			->leftJoin(ModelPendapatanAirNonAirPerubahan::class, 'p.kode_satker = s.kode', 'p')
+			->where("s.pdam_id = '{$pdam_id}'")
+			->andWhere('p.id IS NULL')
+			->limit(21)
+			->offset($offset);
 		$data = $query->getQuery()->execute();
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
@@ -496,22 +512,23 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuanKerjaProdis")
-     * @routePost("/getSatuanKerjaProdis")
-     */
-    public function getSatuanKerjaProdisAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuanKerjaProdis")
+	 * @routePost("/getSatuanKerjaProdis")
+	 */
+	public function getSatuanKerjaProdisAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$query = $this->modelsManager->createBuilder()
-				->from(['s' => ModelSatuanKerja::class])
-				->leftJoin(ModelProduksi::class, 'p.satuan_kerja_id = s.kode', 'p')
-				->where("s.pdam_id = '{$pdam_id}'")
-				->andWhere('p.satuan_kerja_id IS NULL')
-				->andWhere("s.nama LIKE '%$nama%'")
-				->limit(21)
-				->offset($offset);
+			->from(['s' => ModelSatuanKerja::class])
+			->leftJoin(ModelProduksi::class, 'p.satuan_kerja_id = s.kode', 'p')
+			->where("s.pdam_id = '{$pdam_id}'")
+			->andWhere('p.satuan_kerja_id IS NULL')
+			->andWhere("s.nama LIKE '%$nama%'")
+			->limit(21)
+			->offset($offset);
 		$data = $query->getQuery()->execute();
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
@@ -523,22 +540,23 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuanKerjaProdisDistribusi")
-     * @routePost("/getSatuanKerjaProdisDistribusi")
-     */
-    public function getSatuanKerjaProdisDistribusiAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuanKerjaProdisDistribusi")
+	 * @routePost("/getSatuanKerjaProdisDistribusi")
+	 */
+	public function getSatuanKerjaProdisDistribusiAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$query = $this->modelsManager->createBuilder()
-				->from(['s' => ModelSatuanKerja::class])
-				->leftJoin(ModelDistribusi::class, 'p.satuan_kerja_id = s.kode', 'p')
-				->where("s.pdam_id = '{$pdam_id}'")
-				->andWhere('p.satuan_kerja_id IS NULL')
-				->andWhere("s.nama LIKE '%$nama%'")
-				->limit(21)
-				->offset($offset);
+			->from(['s' => ModelSatuanKerja::class])
+			->leftJoin(ModelDistribusi::class, 'p.satuan_kerja_id = s.kode', 'p')
+			->where("s.pdam_id = '{$pdam_id}'")
+			->andWhere('p.satuan_kerja_id IS NULL')
+			->andWhere("s.nama LIKE '%$nama%'")
+			->limit(21)
+			->offset($offset);
 		$data = $query->getQuery()->execute();
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
@@ -550,22 +568,23 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuanKerjaProdisAirTerjual")
-     * @routePost("/getSatuanKerjaProdisAirTerjual")
-     */
-    public function getSatuanKerjaProdisAirTerjualAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuanKerjaProdisAirTerjual")
+	 * @routePost("/getSatuanKerjaProdisAirTerjual")
+	 */
+	public function getSatuanKerjaProdisAirTerjualAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$query = $this->modelsManager->createBuilder()
-				->from(['s' => ModelSatuanKerja::class])
-				->leftJoin(ModelAirTerjual::class, 'p.satuan_kerja_id = s.kode', 'p')
-				->where("s.pdam_id = '{$pdam_id}'")
-				->andWhere('p.satuan_kerja_id IS NULL')
-				->andWhere("s.nama LIKE '%$nama%'")
-				->limit(21)
-				->offset($offset);
+			->from(['s' => ModelSatuanKerja::class])
+			->leftJoin(ModelAirTerjual::class, 'p.satuan_kerja_id = s.kode', 'p')
+			->where("s.pdam_id = '{$pdam_id}'")
+			->andWhere('p.satuan_kerja_id IS NULL')
+			->andWhere("s.nama LIKE '%$nama%'")
+			->limit(21)
+			->offset($offset);
 		$data = $query->getQuery()->execute();
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
@@ -577,22 +596,23 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuanKerjaProdisAirBaku")
-     * @routePost("/getSatuanKerjaProdisAirBaku")
-     */
-    public function getSatuanKerjaProdisAirBakuAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuanKerjaProdisAirBaku")
+	 * @routePost("/getSatuanKerjaProdisAirBaku")
+	 */
+	public function getSatuanKerjaProdisAirBakuAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$query = $this->modelsManager->createBuilder()
-				->from(['s' => ModelSatuanKerja::class])
-				->leftJoin(ModelAirBaku::class, 'p.satuan_kerja_id = s.kode', 'p')
-				->where("s.pdam_id = '{$pdam_id}'")
-				->andWhere('p.satuan_kerja_id IS NULL')
-				->andWhere("s.nama LIKE '%$nama%'")
-				->limit(21)
-				->offset($offset);
+			->from(['s' => ModelSatuanKerja::class])
+			->leftJoin(ModelAirBaku::class, 'p.satuan_kerja_id = s.kode', 'p')
+			->where("s.pdam_id = '{$pdam_id}'")
+			->andWhere('p.satuan_kerja_id IS NULL')
+			->andWhere("s.nama LIKE '%$nama%'")
+			->limit(21)
+			->offset($offset);
 		$data = $query->getQuery()->execute();
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
@@ -604,22 +624,23 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuanKerjaProdisProduksiPerubahan")
-     * @routePost("/getSatuanKerjaProdisProduksiPerubahan")
-     */
-    public function getSatuanKerjaProdisProduksiPerubahanAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuanKerjaProdisProduksiPerubahan")
+	 * @routePost("/getSatuanKerjaProdisProduksiPerubahan")
+	 */
+	public function getSatuanKerjaProdisProduksiPerubahanAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$query = $this->modelsManager->createBuilder()
-				->from(['s' => ModelSatuanKerja::class])
-				->leftJoin(ModelProduksiPerubahan::class, 'p.satuan_kerja_id = s.kode', 'p')
-				->where("s.pdam_id = '{$pdam_id}'")
-				->andWhere('p.satuan_kerja_id IS NULL')
-				->andWhere("s.nama LIKE '%$nama%'")
-				->limit(21)
-				->offset($offset);
+			->from(['s' => ModelSatuanKerja::class])
+			->leftJoin(ModelProduksiPerubahan::class, 'p.satuan_kerja_id = s.kode', 'p')
+			->where("s.pdam_id = '{$pdam_id}'")
+			->andWhere('p.satuan_kerja_id IS NULL')
+			->andWhere("s.nama LIKE '%$nama%'")
+			->limit(21)
+			->offset($offset);
 		$data = $query->getQuery()->execute();
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
@@ -631,22 +652,23 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuanKerjaProdisDistribusiPerubahan")
-     * @routePost("/getSatuanKerjaProdisDistribusiPerubahan")
-     */
-    public function getSatuanKerjaProdisDistribusiPerubahanAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuanKerjaProdisDistribusiPerubahan")
+	 * @routePost("/getSatuanKerjaProdisDistribusiPerubahan")
+	 */
+	public function getSatuanKerjaProdisDistribusiPerubahanAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$query = $this->modelsManager->createBuilder()
-				->from(['s' => ModelSatuanKerja::class])
-				->leftJoin(ModelDistribusiPerubahan::class, 'p.satuan_kerja_id = s.kode', 'p')
-				->where("s.pdam_id = '{$pdam_id}'")
-				->andWhere('p.satuan_kerja_id IS NULL')
-				->andWhere("s.nama LIKE '%$nama%'")
-				->limit(21)
-				->offset($offset);
+			->from(['s' => ModelSatuanKerja::class])
+			->leftJoin(ModelDistribusiPerubahan::class, 'p.satuan_kerja_id = s.kode', 'p')
+			->where("s.pdam_id = '{$pdam_id}'")
+			->andWhere('p.satuan_kerja_id IS NULL')
+			->andWhere("s.nama LIKE '%$nama%'")
+			->limit(21)
+			->offset($offset);
 		$data = $query->getQuery()->execute();
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
@@ -658,22 +680,23 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuanKerjaProdisAirTerjualPerubahan")
-     * @routePost("/getSatuanKerjaProdisAirTerjualPerubahan")
-     */
-    public function getSatuanKerjaProdisAirTerjualPerubahanAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuanKerjaProdisAirTerjualPerubahan")
+	 * @routePost("/getSatuanKerjaProdisAirTerjualPerubahan")
+	 */
+	public function getSatuanKerjaProdisAirTerjualPerubahanAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$query = $this->modelsManager->createBuilder()
-				->from(['s' => ModelSatuanKerja::class])
-				->leftJoin(ModelAirTerjualPerubahan::class, 'p.satuan_kerja_id = s.kode', 'p')
-				->where("s.pdam_id = '{$pdam_id}'")
-				->andWhere('p.satuan_kerja_id IS NULL')
-				->andWhere("s.nama LIKE '%$nama%'")
-				->limit(21)
-				->offset($offset);
+			->from(['s' => ModelSatuanKerja::class])
+			->leftJoin(ModelAirTerjualPerubahan::class, 'p.satuan_kerja_id = s.kode', 'p')
+			->where("s.pdam_id = '{$pdam_id}'")
+			->andWhere('p.satuan_kerja_id IS NULL')
+			->andWhere("s.nama LIKE '%$nama%'")
+			->limit(21)
+			->offset($offset);
 		$data = $query->getQuery()->execute();
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
@@ -685,22 +708,23 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatuanKerjaProdisAirBakuPerubahan")
-     * @routePost("/getSatuanKerjaProdisAirBakuPerubahan")
-     */
-    public function getSatuanKerjaProdisAirBakuPerubahanAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatuanKerjaProdisAirBakuPerubahan")
+	 * @routePost("/getSatuanKerjaProdisAirBakuPerubahan")
+	 */
+	public function getSatuanKerjaProdisAirBakuPerubahanAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$query = $this->modelsManager->createBuilder()
-				->from(['s' => ModelSatuanKerja::class])
-				->leftJoin(ModelAirBakuPerubahan::class, 'p.satuan_kerja_id = s.kode', 'p')
-				->where("s.pdam_id = '{$pdam_id}'")
-				->andWhere('p.satuan_kerja_id IS NULL')
-				->andWhere("s.nama LIKE '%$nama%'")
-				->limit(21)
-				->offset($offset);
+			->from(['s' => ModelSatuanKerja::class])
+			->leftJoin(ModelAirBakuPerubahan::class, 'p.satuan_kerja_id = s.kode', 'p')
+			->where("s.pdam_id = '{$pdam_id}'")
+			->andWhere('p.satuan_kerja_id IS NULL')
+			->andWhere("s.nama LIKE '%$nama%'")
+			->limit(21)
+			->offset($offset);
 		$data = $query->getQuery()->execute();
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
@@ -712,11 +736,12 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getKodePerkiraanSatuanKerja")
-     * @routePost("/getKodePerkiraanSatuanKerja")
-     */
-    public function getKodePerkiraanSatuanKerjaAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getKodePerkiraanSatuanKerja")
+	 * @routePost("/getKodePerkiraanSatuanKerja")
+	 */
+	public function getKodePerkiraanSatuanKerjaAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -737,11 +762,12 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getSatker")
-     * @routePost("/getSatker")
-     */
-    public function getSatkerAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	 * @routeGet("/getSatker")
+	 * @routePost("/getSatker")
+	 */
+	public function getSatkerAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -767,9 +793,9 @@ class Controller extends BaseController
 				LIMIT 20 OFFSET $offset
 		";
 		$bindParams = [
-            'pdam_id' => $pdam_id,
-            'nama' => $nama,
-        ];
+			'pdam_id' => $pdam_id,
+			'nama' => $nama,
+		];
 		$result = $this->db->fetchAll($sql);
 		// return $this->response->setJsonContent($result);
 		// var_dump($result);exit;
@@ -782,12 +808,13 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getMasterParameter")
-     * @routePost("/getMasterParameter")
-     */
-    public function getMasterParameterAction(){
-        $pdam_id = $this->session->user['pdam_id'];
-        $tahun = $this->session->user['tahun'];
+	 * @routeGet("/getMasterParameter")
+	 * @routePost("/getMasterParameter")
+	 */
+	public function getMasterParameterAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
+		$tahun = $this->session->user['tahun'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -808,12 +835,13 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getMasterParameterRkap")
-     * @routePost("/getMasterParameterRkap")
-     */
-    public function getMasterParameterRkapAction(){
-        $pdam_id = $this->session->user['pdam_id'];
-        $tahun = $this->session->user['tahun'];
+	 * @routeGet("/getMasterParameterRkap")
+	 * @routePost("/getMasterParameterRkap")
+	 */
+	public function getMasterParameterRkapAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
+		$tahun = $this->session->user['tahun'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -834,12 +862,13 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getMasterParameterArusKas")
-     * @routePost("/getMasterParameterArusKas")
-     */
-    public function getMasterParameterArusKasAction(){
-        $pdam_id = $this->session->user['pdam_id'];
-        $tahun = $this->session->user['tahun'];
+	 * @routeGet("/getMasterParameterArusKas")
+	 * @routePost("/getMasterParameterArusKas")
+	 */
+	public function getMasterParameterArusKasAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
+		$tahun = $this->session->user['tahun'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -860,12 +889,13 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getMasterParameterArusKasPerubahan")
-     * @routePost("/getMasterParameterArusKasPerubahan")
-     */
-    public function getMasterParameterArusKasPerubahanAction(){
-        $pdam_id = $this->session->user['pdam_id'];
-        $tahun = $this->session->user['tahun'];
+	 * @routeGet("/getMasterParameterArusKasPerubahan")
+	 * @routePost("/getMasterParameterArusKasPerubahan")
+	 */
+	public function getMasterParameterArusKasPerubahanAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
+		$tahun = $this->session->user['tahun'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -886,12 +916,13 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getMasterParameterNeraca")
-     * @routePost("/getMasterParameterNeraca")
-     */
-    public function getMasterParameterNeracaAction(){
-        $pdam_id = $this->session->user['pdam_id'];
-        $tahun = $this->session->user['tahun'];
+	 * @routeGet("/getMasterParameterNeraca")
+	 * @routePost("/getMasterParameterNeraca")
+	 */
+	public function getMasterParameterNeracaAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
+		$tahun = $this->session->user['tahun'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -912,12 +943,13 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getMasterParameterNeracaPerubahan")
-     * @routePost("/getMasterParameterNeracaPerubahan")
-     */
-    public function getMasterParameterNeracaPerubahanAction(){
-        $pdam_id = $this->session->user['pdam_id'];
-        $tahun = $this->session->user['tahun'];
+	 * @routeGet("/getMasterParameterNeracaPerubahan")
+	 * @routePost("/getMasterParameterNeracaPerubahan")
+	 */
+	public function getMasterParameterNeracaPerubahanAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
+		$tahun = $this->session->user['tahun'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -937,10 +969,10 @@ class Controller extends BaseController
 		echo json_encode($json_data);
 	}
 
-    /**
-     * @routeGet("/getAkunPerkiraanPrefix")
-     * @routePost("/getAkunPerkiraanPrefix")
-     */
+	/**
+	 * @routeGet("/getAkunPerkiraanPrefix")
+	 * @routePost("/getAkunPerkiraanPrefix")
+	 */
 	public function getAkunPerkiraanPrefixAction()
 	{
 		$pdam_id = $this->session->user['pdam_id'];
@@ -949,26 +981,25 @@ class Controller extends BaseController
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
-		
-		if($satker == ""){
+
+		if ($satker == "") {
 			$data = ModelAkunPerkiraan::find(
 				array(
 					'limit' => 20,
 					'offset' => $offset,
-					'conditions' => "(nama LIKE '%$nama%' OR kode LIKE '%$nama%') AND pdam_id ='$pdam_id' AND is_aktif=1 AND kode LIKE '".$prefix."%'"
+					'conditions' => "(nama LIKE '%$nama%' OR kode LIKE '%$nama%') AND pdam_id ='$pdam_id' AND is_aktif=1 AND kode LIKE '" . $prefix . "%'"
 				)
 			);
-		}
-		else{
+		} else {
 			$data = ModelAkunPerkiraan::find(
 				array(
 					'limit' => 21,
 					'offset' => $offset,
-					'conditions' => "(nama LIKE '%$nama%' OR kode LIKE '%$nama%') AND id_satuan_kerja = '$satker' AND pdam_id ='$pdam_id' AND is_aktif=1 AND kode LIKE '".$prefix."%'"
+					'conditions' => "(nama LIKE '%$nama%' OR kode LIKE '%$nama%') AND id_satuan_kerja = '$satker' AND pdam_id ='$pdam_id' AND is_aktif=1 AND kode LIKE '" . $prefix . "%'"
 				)
 			);
 		}
-		
+
 		$data_array = $data->toArray();
 		$has_more = count($data_array);
 		$json_data = array(
@@ -978,10 +1009,10 @@ class Controller extends BaseController
 		echo json_encode($json_data);
 	}
 
-    /**
-     * @routeGet("/getAkunPerkiraanNew")
-     * @routePost("/getAkunPerkiraanNew")
-     */
+	/**
+	 * @routeGet("/getAkunPerkiraanNew")
+	 * @routePost("/getAkunPerkiraanNew")
+	 */
 	public function getAkunPerkiraanNewAction()
 	{
 		$pdam_id = $this->session->user['pdam_id'];
@@ -1008,7 +1039,7 @@ class Controller extends BaseController
 		// 	);
 		// }
 
-		if($satker == ""){
+		if ($satker == "") {
 			$data = ModelAkunPerkiraan::find(
 				array(
 					'limit' => 21,
@@ -1016,8 +1047,7 @@ class Controller extends BaseController
 					'conditions' => "(nama LIKE '%$nama%' OR kode LIKE '%$nama%') AND pdam_id ='$pdam_id' AND is_aktif=1"
 				)
 			);
-		}
-		else{
+		} else {
 			$data = ModelAkunPerkiraan::find(
 				array(
 					'limit' => 21,
@@ -1038,15 +1068,15 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/nomorUsulan")
-     * @routePost("/nomorUsulan")
-     */
+	 * @routeGet("/nomorUsulan")
+	 * @routePost("/nomorUsulan")
+	 */
 	public function nomorUsulanAction()
 	{
-		header('Content-Type: application/json; charset=utf-8'); 
+		header('Content-Type: application/json; charset=utf-8');
 		$bagID = Request::get('bag_id');
 		// var_dump($bagID);exit;
-		if(!$bagID) $bagID = 0;
+		if (!$bagID) $bagID = 0;
 		$sql = "CALL generate_number(" . date('Y') . ", 'biaya', $bagID)";
 		$data = $this->db->fetchAll($sql);
 
@@ -1054,15 +1084,15 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getGolonganTarif")
-     * @routePost("/getGolonganTarif")
-     */
+	 * @routeGet("/getGolonganTarif")
+	 * @routePost("/getGolonganTarif")
+	 */
 	public function getGolonganTarifAction()
 	{
 		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
-		
+
 		$offset = ($page - 1) * 20;
 		$data = ModelGolonganTarif::find(
 			array(
@@ -1081,12 +1111,13 @@ class Controller extends BaseController
 	}
 
 	/**
-     * @routeGet("/getPdam")
-     * @routePost("/getPdam")
-     */
-    public function getPdamAction(){
+	 * @routeGet("/getPdam")
+	 * @routePost("/getPdam")
+	 */
+	public function getPdamAction()
+	{
 		$nama = $this->request->get('q');
-		$page = $this->request->get('page');	
+		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
 		$data = PdamModel::find(
 			array(
@@ -1103,14 +1134,15 @@ class Controller extends BaseController
 		);
 		echo json_encode($json_data);
 	}
-	
+
 	/**
-     * @routeGet("/getEkuitasParameterRkap")
-     * @routePost("/getEkuitasParameterRkap")
-     */
-    public function getEkuitasParameterRkapAction(){
-        $pdam_id = $this->session->user['pdam_id'];
-        $tahun = $this->session->user['tahun'];
+	 * @routeGet("/getEkuitasParameterRkap")
+	 * @routePost("/getEkuitasParameterRkap")
+	 */
+	public function getEkuitasParameterRkapAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
+		$tahun = $this->session->user['tahun'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -1130,12 +1162,13 @@ class Controller extends BaseController
 		echo json_encode($json_data);
 	}
 
-		/**
-     * @routeGet("/getDataLaporan")
-     * @routePost("/getDataLaporan")
-     */
-    public function getDataLaporanAction(){
-        $pdam_id = $this->session->user['pdam_id'];
+	/**
+	 * @routeGet("/getDataLaporan")
+	 * @routePost("/getDataLaporan")
+	 */
+	public function getDataLaporanAction()
+	{
+		$pdam_id = $this->session->user['pdam_id'];
 		$nama = $this->request->get('q');
 		$page = $this->request->get('page');
 		$offset = ($page - 1) * 20;
@@ -1153,5 +1186,13 @@ class Controller extends BaseController
 			"has_more" => $has_more,
 		);
 		echo json_encode($json_data);
+	}
+	/**
+	 * @routeGet("/getKategoriLaporan")
+	 * @routePost("/getKategoriLaporan")
+	 */
+	public function getKategoriLaporanAction()
+	{
+		
 	}
 }
